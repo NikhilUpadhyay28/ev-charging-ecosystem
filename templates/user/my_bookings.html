@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Bookings</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+{% extends "base.html" %}
+
+{% block title %}My Bookings{% endblock %}
+
+{% block content %}
+<h3>My Bookings</h3>
+
+{% if bookings %}
+<table class="table table-bordered">
+    <tr>
+        <th>Charger</th>
+        <th>Location</th>
+        <th>Status</th>
+    </tr>
+
+    {% for booking, charger in bookings %}
+    <tr>
+        <td>{{ charger.name }}</td>
+        <td>{{ charger.location }}</td>
+        <td>{{ booking.status }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No bookings found.</p>
+{% endif %}
+
+{% endblock %}
+
+    </table>
+</div>
+
+</body>
+</html>

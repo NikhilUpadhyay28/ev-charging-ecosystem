@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark px-3">
+    <span class="navbar-brand">EV Charge</span>
+    <a href="{{ url_for('logout') }}" class="btn btn-outline-light btn-sm">Logout</a>
+</nav>
+
+{% extends "base.html" %}
+
+{% block title %}User Dashboard{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">Welcome, {{ user.name }} ⚡</h2>
+
+<div class="row g-4">
+
+    <!-- View Chargers -->
+    <div class="col-md-4">
+        <div class="card shadow h-100">
+            <div class="card-body">
+                <h5 class="card-title">Find Chargers</h5>
+                <p class="card-text">
+                    Browse available EV charging stations and check slot availability.
+                </p>
+                <a href="{{ url_for('chargers') }}" class="btn btn-primary w-100">
+                    View Chargers
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- My Bookings -->
+    <div class="col-md-4">
+        <div class="card shadow h-100">
+            <div class="card-body">
+                <h5 class="card-title">My Bookings</h5>
+                <p class="card-text">
+                    View your booking history, cancel slots, and check payment status.
+                </p>
+                <a href="{{ url_for('my_bookings') }}" class="btn btn-success w-100">
+                    My Bookings
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard (only for admin) -->
+    {% if user.role == "admin" %}
+    <div class="col-md-4">
+        <div class="card shadow h-100 border-danger">
+            <div class="card-body">
+                <h5 class="card-title text-danger">Admin Panel</h5>
+                <p class="card-text">
+                    Manage chargers, view revenue, and monitor usage.
+                </p>
+                <a href="{{ url_for('admin_dashboard') }}" class="btn btn-danger w-100">
+                    Admin Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}
+
+</body>
+</html>

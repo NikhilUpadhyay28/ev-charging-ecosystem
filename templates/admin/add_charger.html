@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Charger</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <h3>Add EV Charger</h3>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="alert alert-info">
+          {{ messages[0] }}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+        <div class="mb-3">
+            <label>Charger Name</label>
+            <input name="name" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Location</label>
+            <input name="location" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+    <label>Latitude</label>
+    <input name="latitude" type="number" step="any" class="form-control" required>
+</div>
+
+<div class="mb-3">
+    <label>Longitude</label>
+    <input name="longitude" type="number" step="any" class="form-control" required>
+</div>
+
+
+        <div class="mb-3">
+            <label>Total Slots</label>
+            <input name="total_slots" type="number" class="form-control" required>
+        </div>
+
+        <button class="btn btn-primary">Add Charger</button>
+    </form>
+</div>
+
+</body>
+</html>
